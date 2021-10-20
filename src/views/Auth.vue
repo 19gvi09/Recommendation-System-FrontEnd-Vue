@@ -1,9 +1,9 @@
 <template>
-  <v-container>Main Page</v-container>
+  <v-container>Auth</v-container>
 </template>
 
 <script>
 export default {
-  name: "Home",
+  name: "Auth",
 };
 </script>
