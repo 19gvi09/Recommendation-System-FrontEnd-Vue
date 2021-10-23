@@ -1,8 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Search from "../views/Search.vue";
 import LK from "../views/LK.vue";
 import Auth from "../views/Auth.vue";
+import BookPage from "../views/BookPage.vue";
 
 Vue.use(VueRouter);
 
@@ -13,6 +15,11 @@ const routes = [
     component: Home,
   },
   {
+    path: "/search",
+    name: "Search",
+    component: Search,
+  },
+  {
     path: "/lk",
     name: "LK",
     component: LK,
@@ -21,6 +28,12 @@ const routes = [
     path: "/auth",
     name: "Auth",
     component: Auth,
+  },
+  {
+    path: "/book/:id",
+    name: "BookPage",
+    component: BookPage,
+    props: true,
   },
 ];
 
