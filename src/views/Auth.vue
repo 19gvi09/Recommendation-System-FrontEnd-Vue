@@ -10,6 +10,7 @@
             <v-card>
               <v-card-text>
                 <v-text-field
+                  v-if="tab.input"
                   v-model="id"
                   label="Your ID"
                   :rules="[rules.required]"
@@ -19,7 +20,9 @@
               <v-card-actions>
                 <v-btn @click="$router.go(-1)" text>Назад</v-btn>
                 <v-spacer></v-spacer>
-                <v-btn text color="primary">{{ tab.buttonText }}</v-btn>
+                <v-btn @click="tab.buttonAction" text color="primary">{{
+                  tab.buttonText
+                }}</v-btn>
               </v-card-actions>
             </v-card>
           </v-tab-item>
@@ -38,11 +41,15 @@ export default {
       tabs: [
         {
           name: "Вход",
+          input: true,
           buttonText: "Войти",
+          buttonAction: this.auth,
         },
         {
           name: "Регистрация",
+          input: false,
           buttonText: "Зарегистрироваться",
+          buttonAction: this.register,
         },
       ],
       id: "",
@@ -52,6 +59,17 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    auth() {
+      console.log("auth");
+      localStorage.id = this.id;
+      this.$store.commit("setID", localStorage.id);
+      this.$router.go(-1);
+    },
+    register() {
+      console.log("register");
+    },
   },
 };
 </script>

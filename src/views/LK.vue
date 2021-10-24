@@ -6,7 +6,7 @@
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in items" :key="item.tab">
         <v-card flat>
-          <v-card-text>{{ item.content }}</v-card-text>
+          <Results :hidden="item.reservationHidden" :books="item.books" />
         </v-card>
       </v-tab-item>
     </v-tabs-items>
@@ -14,15 +14,18 @@
 </template>
 
 <script>
+import Results from "../components/Results.vue";
+import json from "../data/books.json";
 export default {
   name: "LK",
+  components: { Results },
   data() {
     return {
       tab: null,
       items: [
-        { tab: "Мои заказы", content: "Мои заказы" },
-        { tab: "Избранное", content: "Избранное" },
-        { tab: "История", content: "История" },
+        { tab: "Мои заказы", books: json, reservationHidden: true },
+        { tab: "Избранное", books: json, reservationHidden: false },
+        { tab: "История", books: json, reservationHidden: false },
       ],
     };
   },

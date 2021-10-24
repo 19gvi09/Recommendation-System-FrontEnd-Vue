@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <app-bar :auth="auth" />
+    <app-bar />
 
     <v-main>
       <v-row>
@@ -20,9 +20,7 @@ export default {
   components: { AppBar },
   name: "App",
   data() {
-    return {
-      auth: true,
-    };
+    return {};
   },
 };
 </script>
